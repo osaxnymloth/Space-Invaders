@@ -29,31 +29,18 @@ public class UIManager : MonoBehaviour
         livesText.text = "Lives: " + player.playerLives;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         if(gameManager == null)
-        {
             Debug.Log("UIManager: GameManager is null!");
-        }
         if (player == null)
-        {
             Debug.Log("UIManager: Player is null!");
-        }
-    }
-
-    void Update()
-    {
-        
     }
 
     //update score function
-    public void UpdateScore(int playerScore)
-    {
-        scoreText.text = "Score: " + playerScore.ToString();
-    }
+    public void UpdateScore(int playerScore) => scoreText.text = "Score: " + playerScore.ToString();
+
 
     //update number of lives left for the player
-    public void UpdateLives(int currentLives)
-    {
-        livesText.text = "Lives: " + currentLives.ToString();
-    }
+    public void UpdateLives(int currentLives) => livesText.text = "Lives: " + currentLives.ToString();
+
 
     // if game is over, activate the necessary UI elements and start flashing restart text
     public void GameOver()
@@ -83,5 +70,6 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
-
 }
+
+

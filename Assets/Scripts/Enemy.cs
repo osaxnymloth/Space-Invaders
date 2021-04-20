@@ -27,35 +27,21 @@ public class Enemy : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         uIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         if(uIManager == null)
-        {
             Debug.Log("Enemy: UIManager is empty!");
-        }
         if (gameManager == null)
-        {
             Debug.Log("Enemy: GameManager is empty!");
-        }
         if (player == null)
-        {
             Debug.Log("Enemy: Player is empty!");
-        }
-       
-
     }
 
     void Update()
     {
         EnemyShoot();
         if(transform.position.z < -4.5)
-        {
             gameManager.GameOver();
-        }
     }
 
-    private void FixedUpdate()
-    {
-        MoveEnemy(); // using FixedUpdate to avoid any "glitches" related to framerate etc. 
-
-    }
+    private void FixedUpdate() => MoveEnemy();
 
 
     void EnemyShoot()

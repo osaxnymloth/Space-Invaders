@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -30,19 +28,14 @@ public class Player : MonoBehaviour
         //make sure UI Manager is on the scene
         uIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         if (uIManager == null)
-        {
             Debug.Log("Player: UIManager is empty!");
-        }
-
     }
 
     void Update()
     {
         playerMove();
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > playerCanFire)
-        {
             ShootLaser();
-        }
     }
 
     // player movement and restrictions
@@ -52,15 +45,11 @@ public class Player : MonoBehaviour
         transform.Translate(Vector3.right * horizontalMove * playerSpeed * Time.deltaTime);
         //restrict player movement to visible area
         if (transform.position.x > 13.5f)
-        {
             transform.position = new Vector3(13.5f, 1, -7f);
             //Debug.Log("Player moved past > 14.5f");
-        }
         else if (transform.position.x < -13.5f)
-        {
             transform.position = new Vector3(-13.5f, 1, -7f);
             //Debug.Log("Player moved past < -14.5f");
-        }
     }
 
     void ShootLaser()
